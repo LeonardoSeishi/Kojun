@@ -1,6 +1,6 @@
 module Main (main) where
 
-import indiceMatriz
+import IndiceMatriz, ChecarAcimaAbaixo
 
 {--[
 [0,0,4,0,2,0],
@@ -33,14 +33,6 @@ formatarLinha :: [(Int,Int,Int,Int)] -> String
 formatarLinha [] = "\n"
 formatarLinha ((x,y,r,v):t) = (show v) ++ " " ++ (formatarLinha t)
 
-
-checarAdjacenteIgual :: (Int,Int,Int,Int) -> Bool
-checarAdjacenteIgual (x,y,r,v) = 
-
-checarAcimaMesmaRegiao :: (Int,Int,Int,Int) -> Bool
-
-
-checarRegiaoNumeros :: (Int,Int,Int,Int) -> Bool
 
  
 atualizarTuplas ::
