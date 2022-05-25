@@ -1,6 +1,7 @@
 module Main (main) where
 
-import IndiceMatriz, ChecarAcimaAbaixo
+import IndiceMatriz
+import ChecarAcimaAbaixo
 
 {--[
 [0,0,4,0,2,0],
@@ -34,11 +35,11 @@ formatarLinha [] = "\n"
 formatarLinha ((x,y,r,v):t) = (show v) ++ " " ++ (formatarLinha t)
 
 
- 
+{-- 
 atualizarTuplas ::
 
 
-resolver :: [[(Int,Int,Int,Int)]] ->
+resolver :: [[(Int,Int,Int,Int)]] -> --}
 
 
 
