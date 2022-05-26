@@ -1,4 +1,4 @@
-module ChecarAcimaAbaixo (verificarAcimaAbaixo) where
+module ChecarAcimaAbaixo (verificarAcimaAbaixo, checarAcimaMaior, checarAbaixoMenor) where
 
 import IndiceMatriz
 
@@ -10,7 +10,7 @@ verificarAcimaAbaixo mat lin col reg val = (checarAcimaMaior mat lin col reg val
 checarAcimaMaior :: [[(Int,Int,Int,Int)]] -> Int -> Int -> Int -> Int -> Bool
 checarAcimaMaior mat lin col reg val = 
     if ((getRegLinha mat (lin-1) col) == reg) then
-        if ((getPosLinha mat (lin-1) col) > val) then
+        if ((getPosLinha mat (lin-1) col) > val || (getPosLinha mat (lin-1) col) == 0) then
             True
         else
             False

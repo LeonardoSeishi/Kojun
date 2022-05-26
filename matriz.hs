@@ -1,8 +1,9 @@
 module Main (main) where
 
-import IndiceMatriz
+import ChecarAdjacente
 import ChecarAcimaAbaixo
 import ChecarRegiao
+import TestePossibilidades
 
 {--
 matriz com os valores iniciais
@@ -15,7 +16,7 @@ matriz com os valores iniciais
 [6,2,0,2,0,5]]
 
 regioes da matriz
-[[(0,0),(1,0),(2,0),(2,1)],                     -0
+[[(0,0),(1,0),(2,0),(2,1)],                     -0k
 [(0,1),(0,2),(0,3),(1,2)],                      -1
 [(0,4),(1,3),(1,4),(1,5),(2,3)],                -2
 [(0,5)],                                        -3
@@ -33,7 +34,7 @@ regioes da matriz
 formatar :: [[(Int,Int,Int,Int)]] -> String
 formatar [] = ""
 formatar (((x,y,r,v):t):l) = (show v) ++ " " ++ (formatarLinha t) ++ (formatar l)
---l = resto das listas  t = outras tuplas  a = tupla atual
+--l = resto das listas  t = outras tuplas na mesma linha  (x,y,r,v) = tupla atual
 
 formatarLinha :: [(Int,Int,Int,Int)] -> String
 formatarLinha [] = "\n"
@@ -56,6 +57,8 @@ main = do
                         [(4,0,7,0),(4,1,8,0),(4,2,8,0),(4,3,10,0),(4,4,10,3),(4,5,6, 0)],
                         [(5,0,8,6),(5,1,8,2),(5,2,8,0),(5,3,10,2),(5,4,10,0),(5,5,10,5)]]
         
+        putStrLn (show (resolverTabuleiro tabuleiro tabuleiro))
+
         putStr (formatar tabuleiro)
 
 
