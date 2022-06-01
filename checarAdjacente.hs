@@ -2,7 +2,7 @@ module ChecarAdjacente (checarAdjacente) where
 
 import IndiceMatriz
 
-avaliarVizinhosLinhaCima::[[(Int,Int,Int,Int)]] -> Int -> Int -> Int ->Bool
+avaliarVizinhosLinhaCima::[[(Int,Int,Int,Int)]] -> Int -> Int -> Int -> Bool
 avaliarVizinhosLinhaCima tabuleiro linha coluna val =
     if (getRegLinha tabuleiro linha coluna) == (getRegLinha tabuleiro (linha-1) coluna) then
         True
@@ -12,7 +12,7 @@ avaliarVizinhosLinhaCima tabuleiro linha coluna val =
         else
             True
 
-avaliarVizinhosLinhaBaixo::[[(Int,Int,Int,Int)]] -> Int -> Int -> Int ->Bool
+avaliarVizinhosLinhaBaixo::[[(Int,Int,Int,Int)]] -> Int -> Int -> Int -> Bool
 avaliarVizinhosLinhaBaixo tabuleiro linha coluna val =
         if (getRegLinha tabuleiro linha coluna) == (getRegLinha tabuleiro (linha+1) coluna) then
             True
@@ -22,7 +22,7 @@ avaliarVizinhosLinhaBaixo tabuleiro linha coluna val =
             else
                 True
 
-avaliarVizinhosColunaEsq::[[(Int,Int,Int,Int)]] -> Int -> Int -> Int ->Bool
+avaliarVizinhosColunaEsq::[[(Int,Int,Int,Int)]] -> Int -> Int -> Int -> Bool
 avaliarVizinhosColunaEsq tabuleiro linha coluna val=
     if (getRegLinha tabuleiro linha coluna) == (getRegLinha tabuleiro linha (coluna - 1) ) then
         True
@@ -32,7 +32,7 @@ avaliarVizinhosColunaEsq tabuleiro linha coluna val=
         else
             True
 
-avaliarVizinhosColunaDir::[[(Int,Int,Int,Int)]] ->Int -> Int -> Int ->Bool
+avaliarVizinhosColunaDir::[[(Int,Int,Int,Int)]] ->Int -> Int -> Int -> Bool
 avaliarVizinhosColunaDir tabuleiro linha coluna val =
         if (getRegLinha tabuleiro linha coluna) == (getRegLinha tabuleiro linha (coluna + 1) ) then
             True
@@ -42,6 +42,6 @@ avaliarVizinhosColunaDir tabuleiro linha coluna val =
             else
                 True
 
-checarAdjacente::[[(Int,Int,Int,Int)]] ->Int -> Int -> Int ->Bool
+checarAdjacente::[[(Int,Int,Int,Int)]] ->Int -> Int -> Int -> Bool
 checarAdjacente tabuleiro linha coluna val =
     (avaliarVizinhosColunaDir tabuleiro linha coluna val) &&(avaliarVizinhosColunaEsq tabuleiro linha coluna val) && (avaliarVizinhosLinhaCima tabuleiro linha coluna val) &&(avaliarVizinhosLinhaBaixo tabuleiro linha coluna val)

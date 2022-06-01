@@ -14,7 +14,6 @@ verificarRegiao (((x,y,r,v):t):l) reg val =
         (verificarLinhaRegiao t reg val) && verificarRegiao l reg val
   
 verificarLinhaRegiao :: [(Int,Int,Int,Int)] -> Int -> Int -> Bool
-{--verificarLinha [] = "\n"--}
 verificarLinhaRegiao [] _ _ = True
 verificarLinhaRegiao ((x,y,r,v):t) reg val = 
     if (reg == r) then
