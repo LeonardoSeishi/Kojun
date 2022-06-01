@@ -1,6 +1,6 @@
 module ChecarAdjacente (checarAdjacente) where
 
-import IndiceMatriz
+import Matriz
 
 avaliarVizinhosLinhaCima::[[(Int,Int,Int,Int)]] -> Int -> Int -> Int -> Bool
 avaliarVizinhosLinhaCima tabuleiro linha coluna val =

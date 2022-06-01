@@ -3,7 +3,7 @@ module TestePossibilidades (resolverTabuleiro, testarValores) where
 import ChecarAcimaAbaixo
 import ChecarRegiao
 import ChecarAdjacente
-import Tuplas
+import Matriz
 
 
 resolverTabuleiro :: [[(Int,Int,Int,Int)]]-> [[(Int,Int,Int,Int)]]
@@ -38,12 +38,3 @@ testarValores mat (x,y,r,v) teste =
     else
         []
             
-getTamanhoRegiao :: [[(Int,Int,Int,Int)]] -> Int -> Int
-getTamanhoRegiao [] _ = 0
-getTamanhoRegiao (((_,_,r,_):t):l) reg | reg == r = 1 + (getTamanhoRegiaoLinha t reg) + (getTamanhoRegiao l reg)
-                                       | otherwise = (getTamanhoRegiaoLinha t reg) + (getTamanhoRegiao l reg)
-
-getTamanhoRegiaoLinha :: [(Int,Int,Int,Int)] -> Int -> Int
-getTamanhoRegiaoLinha [] _ = 0
-getTamanhoRegiaoLinha ((_,_,r,_):t) reg | reg == r = 1 + (getTamanhoRegiaoLinha t reg)
-                                        | otherwise = (getTamanhoRegiaoLinha t reg)

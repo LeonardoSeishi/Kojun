@@ -1,6 +1,6 @@
 module ChecarAcimaAbaixo (verificarAcimaAbaixo, checarAcimaMaior, checarAbaixoMenor) where
 
-import IndiceMatriz
+import Matriz
 
 
 --mat = matriz| lin = linha| col = coluna| reg = regiao| val = valor

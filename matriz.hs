@@ -1,64 +1,55 @@
-module Main (main) where
-
-import ChecarAdjacente
-import ChecarAcimaAbaixo
-import ChecarRegiao
-import TestePossibilidades
-import Tuplas
-
-{--
-matriz com os valores iniciais
-[
-[0,0,4,0,2,0],
-[0,0,3,0,0,0],
-[1,4,0,4,0,0],
-[0,5,0,0,0,2],
-[0,0,0,0,3,0],
-[6,2,0,2,0,5]]
-
-regioes da matriz
-[[(0,0),(1,0),(2,0),(2,1)],                     -0
-[(0,1),(0,2),(0,3),(1,2)],                      -1
-[(0,4),(1,3),(1,4),(1,5),(2,3)],                -2
-[(0,5)],                                        -3
-[(1,1)],                                        -4
-[(2,2),(3,2)],                                  -5
-[(2,4),(2,5),(3,5),(4,5)],                      -6
-[(3,0),(4,0)],                                  -7
-[(3,1),(4,1),(4,2),(5,0),(5,1),(5,2)],          -8
-[(3,3),(3,4)],                                  -9
-[(4,3),(4,4),(5,3),(5,4),(5,5)]]                -10
---}
-
---(x,y,r,v)  x = linha  y = coluna  r = regiao  v = valor
-
-formatar :: [[(Int,Int,Int,Int)]] -> String
-formatar [] = ""
-formatar (((x,y,r,v):t):l) = (show v) ++ " " ++ (formatarLinha t) ++ (formatar l)
---l = resto das listas  t = outras tuplas na mesma linha  (x,y,r,v) = tupla atual
-
-formatarLinha :: [(Int,Int,Int,Int)] -> String
-formatarLinha [] = "\n"
-formatarLinha ((x,y,r,v):t) = (show v) ++ " " ++ (formatarLinha t)
+module Matriz (getRegLinha, getPosLinha, alterarTupla, getTamanhoRegiao) where
 
 
-{-- 
-atualizarTuplas ::
+--percorre as linhas e depois as colunas ate achar a linha  e coluna desejada e retorna a regiao
+getRegLinha :: [[(Int,Int,Int,Int)]] -> Int -> Int -> Int
+getRegLinha [] _ _= -1
+getRegLinha (a:e) linha coluna |linha == 0 = getRegColuna a coluna
+                               |otherwise = (getRegLinha e (linha-1) coluna)
 
+{--função de suporte para procurar a coluna desejada a partir da linha que ja 
+   foi encontrada pela função anterior e retorna a regiao--}
+getRegColuna :: [(Int,Int,Int,Int)] -> Int -> Int
+getRegColuna [] _ = -1
+getRegColuna ((a,b,c,d):e) coluna |coluna == 0 = c
+                                  |otherwise = (getRegColuna e (coluna - 1) )
 
-resolver :: [[(Int,Int,Int,Int)]] -> --}
+--a mesma logica acima se aplica a essas outras duas funções, porem retorna o valor desta posicao
+getPosLinha :: [[(Int,Int,Int,Int)]] -> Int -> Int -> Int
+getPosLinha [] _ _ = -1
+getPosLinha (a:e) linha coluna |linha == 0 = getPosColuna a coluna
+                               |otherwise = (getPosLinha e (linha-1) coluna)
 
-
-main = do
-        let tabuleiro = [
-                        [(0,0,0,0),(0,1,1,0),(0,2,1,4),(0,3,1, 0),(0,4,2, 2),(0,5,3, 0)],
-                        [(1,0,0,0),(1,1,4,0),(1,2,1,3),(1,3,2, 0),(1,4,2, 0),(1,5,2, 0)],
-                        [(2,0,0,1),(2,1,0,4),(2,2,5,0),(2,3,2, 4),(2,4,6, 0),(2,5,6, 0)],
-                        [(3,0,7,0),(3,1,8,5),(3,2,5,0),(3,3,9, 0),(3,4,9, 0),(3,5,6, 2)],
-                        [(4,0,7,0),(4,1,8,0),(4,2,8,0),(4,3,10,0),(4,4,10,3),(4,5,6, 0)],
-                        [(5,0,8,6),(5,1,8,2),(5,2,8,0),(5,3,10,2),(5,4,10,0),(5,5,10,5)]]
-
-        putStrLn (formatar (resolverTabuleiro tabuleiro))
+getPosColuna :: [(Int,Int,Int,Int)] -> Int -> Int
+getPosColuna [] _ = -1
+getPosColuna ((a,b,c,d):e) coluna |coluna == 0 = d
+                                  |otherwise = (getPosColuna e (coluna - 1) )
 
 
 
+
+alterarTupla :: [[(Int, Int, Int, Int)]] -> Int -> Int -> Int -> [[(Int, Int, Int, Int)]]
+alterarTupla [] _ _ _ = []
+alterarTupla (a:l) linha coluna new_value
+    |linha == 0 = alterarTuplaLinha a coluna new_value : l
+    |otherwise = a : alterarTupla l (linha-1) coluna new_value
+
+alterarTuplaLinha :: [(Int, Int, Int, Int)] -> Int -> Int -> [(Int, Int, Int, Int)]
+alterarTuplaLinha [] _ _ = []
+alterarTuplaLinha ((x, y, r, v):t) coluna new_value
+    |coluna == 0 = (x,y,r,new_value) : t
+    |otherwise = (x,y,r,v) : alterarTuplaLinha t (coluna-1) new_value
+
+
+
+
+
+getTamanhoRegiao :: [[(Int,Int,Int,Int)]] -> Int -> Int
+getTamanhoRegiao [] _ = 0
+getTamanhoRegiao (((_,_,r,_):t):l) reg | reg == r = 1 + (getTamanhoRegiaoLinha t reg) + (getTamanhoRegiao l reg)
+                                       | otherwise = (getTamanhoRegiaoLinha t reg) + (getTamanhoRegiao l reg)
+
+getTamanhoRegiaoLinha :: [(Int,Int,Int,Int)] -> Int -> Int
+getTamanhoRegiaoLinha [] _ = 0
+getTamanhoRegiaoLinha ((_,_,r,_):t) reg | reg == r = 1 + (getTamanhoRegiaoLinha t reg)
+                                        | otherwise = (getTamanhoRegiaoLinha t reg)
