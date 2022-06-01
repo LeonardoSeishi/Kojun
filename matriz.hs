@@ -1,7 +1,12 @@
 module Matriz (getRegLinha, getPosLinha, alterarTupla, getTamanhoRegiao) where
 
 
---percorre as linhas e depois as colunas ate achar a linha  e coluna desejada e retorna a regiao
+{-- as quatro funções abaixo simulam uma chamada de dados da lista por indices
+ ex.: valor = matriz[x][y]
+sendo que as duas primeiras são responsáveis por retornar o número da região
+e os outros dois retornam o valor na posição  --}
+
+--percorre todas as linhas até achar a linha do indice
 getRegLinha :: [[(Int,Int,Int,Int)]] -> Int -> Int -> Int
 getRegLinha [] _ _= -1
 getRegLinha (a:e) linha coluna |linha == 0 = getRegColuna a coluna
@@ -26,8 +31,7 @@ getPosColuna ((a,b,c,d):e) coluna |coluna == 0 = d
                                   |otherwise = (getPosColuna e (coluna - 1) )
 
 
-
-
+{-- altera alguma tupla dentro da matriz com o novo VALOR, o resto continua igual--}
 alterarTupla :: [[(Int, Int, Int, Int)]] -> Int -> Int -> Int -> [[(Int, Int, Int, Int)]]
 alterarTupla [] _ _ _ = []
 alterarTupla (a:l) linha coluna new_value
@@ -42,8 +46,7 @@ alterarTuplaLinha ((x, y, r, v):t) coluna new_value
 
 
 
-
-
+{-- função auxiliar que soma o número de posições que se tem uma região desejada--}
 getTamanhoRegiao :: [[(Int,Int,Int,Int)]] -> Int -> Int
 getTamanhoRegiao [] _ = 0
 getTamanhoRegiao (((_,_,r,_):t):l) reg | reg == r = 1 + (getTamanhoRegiaoLinha t reg) + (getTamanhoRegiao l reg)
