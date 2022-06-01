@@ -6,6 +6,11 @@ import TestePossibilidades
 {--quase todas as funcionalidades desse programa possuem duas funções 
 para garantir que ele passe por todas as linhas e colunas de uma matriz
 
+* l1 = linha atual l = resto das listas  t = outras tuplas na mesma linha  (x,y,r,v) = tupla atual
+* x = linha  y = coluna  r = regiao  v = valor
+* mat = matriz inteira
+--> VALE PARA QUASE TODOS AS FUNÇÕES DESSE PROGRAMA <--
+
 matriz com os valores iniciais
 [
 [0,0,4,0,2,0],
@@ -31,15 +36,11 @@ regioes da matriz e as posições dentro de cada regiao
 
 
 --pega a matriz completa e transforma em uma string para o print aparecer apenas os valores
---formatar faz a concatenação das strings entre as linhas
 formatar :: [[(Int,Int,Int,Int)]] -> String
 formatar [] = ""
 formatar (((x,y,r,v):t):l) = (show v) ++ " " ++ (formatarLinha t) ++ (formatar l)
---l = resto das listas  t = outras tuplas na mesma linha  (x,y,r,v) = tupla atual
---(x,y,r,v)  x = linha  y = coluna  r = regiao  v = valor
 
---função auxiliar que concatena o valor de cada tupla da linha passada pela função auxiliar
---ou seja, pega todas as colunas de um linha e concatena em uma string 
+
 formatarLinha :: [(Int,Int,Int,Int)] -> String
 formatarLinha [] = "\n"
 formatarLinha ((x,y,r,v):t) = (show v) ++ " " ++ (formatarLinha t)
