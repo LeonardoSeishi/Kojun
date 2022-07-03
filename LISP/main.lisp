@@ -1,6 +1,3 @@
-module Main (main) where
-
-import TestePossibilidades
 
 
 #|quase todas as funcionalidades desse programa possuem duas funções 
@@ -63,7 +60,6 @@ regioes da matriz e as posições dentro de cada regiao
         (format t(formatar tabuleiro))
 )
 
-(main)
 
 
 

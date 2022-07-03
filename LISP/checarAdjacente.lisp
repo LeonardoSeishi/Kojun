@@ -1,6 +1,4 @@
-module ChecarAdjacente (checarAdjacente) where
-
-import Matriz
+(load "matriz")
 
 #| 
     Esta função recebe uma posição e um valor para avaliar,
@@ -9,9 +7,9 @@ import Matriz
 |#
 
 (defun avaliarVizinhosLinhaCima (tabuleiro linha coluna val)
-    ( if (= (getRegLinha tabuleiro linha coluna) (getRegLinha tabuleiro (linha-1) coluna))
+    ( if (= (getRegLinha tabuleiro linha coluna) (getRegLinha tabuleiro (- linha 1) coluna))
         T
-        (if (= (getPosLinha tabuleiro (linha-1) coluna) val)
+        (if (= (getPosLinha tabuleiro (- linha 1) coluna) val)
             NIL
             T
         )    
@@ -20,14 +18,14 @@ import Matriz
 
 #| 
     Esta função recebe uma posição e um valor para avaliar,
-   Checa se a posição a baixo é de outra regiao e possui o mesmo valor, se sim retorna True
+    Checa se a posição a baixo é de outra regiao e possui o mesmo valor, se sim retorna True
     Caso contrario retorna False 
 |#
 
 (defun avaliarVizinhosLinhaBaixo (tabuleiro linha coluna val)
-    (if (= (getRegLinha tabuleiro linha coluna) (getRegLinha tabuleiro (linha+1) coluna))
+    (if (= (getRegLinha tabuleiro linha coluna) (getRegLinha tabuleiro (+ linha 1) coluna))
         T
-        (if (= (getPosLinha tabuleiro (linha+1) coluna) val)
+        (if (= (getPosLinha tabuleiro (+ linha 1) coluna) val)
             NIL
             T
         )   
@@ -41,9 +39,9 @@ import Matriz
 |#
 
 (defun avaliarVizinhosColunaEsq (tabuleiro linha coluna val)
-    (if (= (getRegLinha tabuleiro linha coluna) (getRegLinha tabuleiro linha (coluna - 1) ))
+    (if (= (getRegLinha tabuleiro linha coluna) (getRegLinha tabuleiro linha (- coluna 1) ))
         T
-        (if (= (getPosLinha tabuleiro linha (coluna-1)) val)
+        (if (= (getPosLinha tabuleiro linha (- coluna 1)) val)
             NIL
             T
         )
@@ -57,9 +55,9 @@ import Matriz
 |#
 
 (defun avaliarVizinhosColunaDir (tabuleiro linha coluna val)
-    (if (= (getRegLinha tabuleiro linha coluna) (getRegLinha tabuleiro linha (coluna + 1) ))
+    (if (= (getRegLinha tabuleiro linha coluna) (getRegLinha tabuleiro linha (+ coluna 1) ))
         T
-        (if (= (getPosLinha tabuleiro linha (coluna+1)) val)
+        (if (= (getPosLinha tabuleiro linha (+ coluna 1)) val)
             NIL
             T
         )
