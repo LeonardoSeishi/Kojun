@@ -8,7 +8,7 @@ import Matriz               --arquivo que ajuda na manipulação de matrizes (re
 
 --metodo que pega a matriz inicial e repassa ela, a primeira linha e os restante das linhas
 resolverTabuleiro :: [[(Int,Int,Int,Int)]]-> [[(Int,Int,Int,Int)]]
-resolverTabuleiro (l1:l) = resolverTabuleiroLinha (l1:l) l l
+resolverTabuleiro (l1:l) = resolverTabuleiroLinha (l1:l) l l1
 
 
 {--Função principal que percorre toda a matriz enquanto a resolve
