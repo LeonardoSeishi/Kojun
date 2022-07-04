@@ -2,8 +2,8 @@
 
 #| 
     Esta função recebe uma posição e um valor para avaliar,
-    Checa se a posição acima é de outra regiao e possui o mesmo valor, se sim retorna True
-    Caso contrario retorna False 
+    Checa se a posição acima é de outra regiao e possui o mesmo valor, se sim retorna T
+    Caso contrario retorna NIL 
 |#
 
 (defun avaliarVizinhosLinhaCima (tabuleiro linha coluna val)
@@ -18,8 +18,8 @@
 
 #| 
     Esta função recebe uma posição e um valor para avaliar,
-    Checa se a posição a baixo é de outra regiao e possui o mesmo valor, se sim retorna True
-    Caso contrario retorna False 
+    Checa se a posição a baixo é de outra regiao e possui o mesmo valor, se sim retorna T
+    Caso contrario retorna NIL 
 |#
 
 (defun avaliarVizinhosLinhaBaixo (tabuleiro linha coluna val)
@@ -34,8 +34,8 @@
 
 #| 
     Esta função recebe uma posição e um valor para avaliar,
-    Checa se a posição a esquerda é de outra regiao e possui o mesmo valor, se sim retorna True
-    Caso contrario retorna False 
+    Checa se a posição a esquerda é de outra regiao e possui o mesmo valor, se sim retorna T
+    Caso contrario retorna NIL 
 |#
 
 (defun avaliarVizinhosColunaEsq (tabuleiro linha coluna val)
@@ -50,8 +50,8 @@
 
 #|
     Esta função recebe uma posição e um valor para avaliar,
-    Checa se a posição a direita é de outra regiao e possui o mesmo valor, se sim retorna True
-    Caso contrario retorna False
+    Checa se a posição a direita é de outra regiao e possui o mesmo valor, se sim retorna T
+    Caso contrario retorna NIL
 |#
 
 (defun avaliarVizinhosColunaDir (tabuleiro linha coluna val)
@@ -67,8 +67,8 @@
 #|
     Esta função recebe uma posição e um valor para avaliar,
     Chama todas as funções para avaliar as posições acima, a baixo, a direita e a esquerda
-    Se todas retornarem True ela retorna True
-    Caso contrario retorna False
+    Se todas retornarem T ela retorna T
+    Caso contrario retorna NIL
 |#
 
 (defun checarAdjacente (tabuleiro linha coluna val) 

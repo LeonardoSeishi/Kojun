@@ -1,7 +1,7 @@
 
 
 #|  as quatro funções abaixo simulam uma chamada de dados da lista por indices
- ex.: valor = matriz[x][y]
+ ex.: valor = matriz[linha][coluna]
 sendo que as duas primeiras são responsáveis por retornar o número da região
 e os outros dois retornam o valor na posição  |#
 

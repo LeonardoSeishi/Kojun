@@ -5,7 +5,7 @@
         T
         (if (= reg (car (cdr (cdr (car (car matriz))))))
             (if (= val (car (last (car (car matriz)))))
-                Nil
+                NIL
                 (and (verificarLinhaRegiao (cdr (car matriz)) reg val) (verificarRegiao (cdr matriz) reg val))
             )
             (and (verificarLinhaRegiao (cdr (car matriz)) reg val) (verificarRegiao (cdr matriz) reg val))
@@ -20,7 +20,7 @@
         T
         (if (= reg (car (cdr (cdr (car linha)))))
             (if (= val (car (last (car linha))))
-                Nil
+                NIL
                 (verificarLinhaRegiao (cdr linha) reg val)
             )
             (verificarLinhaRegiao (cdr linha) reg val)
