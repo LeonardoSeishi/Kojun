@@ -1,21 +1,17 @@
-
+(load "testePossibilidades")
 
 #|quase todas as funcionalidades desse programa possuem duas funções 
 para garantir que ele passe por todas as linhas e colunas de uma matriz
 
-* 1 = linha atual l = resto das listas  t = outras tuplas na mesma linha  (x,y,r,v) = tupla atual
-* x = linha  y = coluna  r = regiao  v = valor
-* mat = matriz inteira
---> VALE PARA QUASE TODOS AS FUNÇÕES DESSE PROGRAMA <--
-
 matriz com os valores iniciais
-[
-[0,0,4,0,2,0],
-[0,0,3,0,0,0],
-[1,4,0,4,0,0],
-[0,5,0,0,0,2],
-[0,0,0,0,3,0],
-[6,2,0,2,0,5]]
+(
+(0 0 4 0 2 0)
+(0 0 3 0 0 0)
+(1 4 0 4 0 0)
+(0 5 0 0 0 2)
+(0 0 0 0 3 0)
+(6 2 0 2 0 5)
+)
 
 regioes da matriz e as posições dentro de cada regiao
 [[(0,0),(1,0),(2,0),(2,1)],                     -0
@@ -57,8 +53,14 @@ regioes da matriz e as posições dentro de cada regiao
                         (list '(5 0 8 6) '(5 1 8 2) '(5 2 8 0) '(5 3 10 2) '(5 4 10 0) '(5 5 10 5))
                         )
         )
+        (write-line "Entrada:")
         (format t(formatar tabuleiro))
+        (write-line "")
+        (write-line "Saída:")
+        (format t(formatar (resolverTabuleiro tabuleiro)))
 )
+
+(main)
 
 
 

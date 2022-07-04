@@ -65,7 +65,7 @@ e os outros dois retornam o valor na posição  |#
     (if (null linha_matriz)
         ()
         (if (= coluna 0)
-            (cons (append (remove (car(last(car linha_matriz))) (car linha_matriz)) (list new_value)) (cdr linha_matriz) )
+            (cons (list (car(car linha_matriz)) (car(cdr(car linha_matriz))) (car(cdr(cdr(car linha_matriz)))) new_value) (cdr linha_matriz) )
             (cons (car linha_matriz) (alterarListaLinha (cdr linha_matriz) (- coluna 1) new_value) )
         )
     )

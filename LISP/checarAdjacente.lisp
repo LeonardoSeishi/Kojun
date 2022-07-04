@@ -71,6 +71,6 @@
     Caso contrario retorna False
 |#
 
-(defun checarAdjacente (tabuleiro linha coluna val) =
+(defun checarAdjacente (tabuleiro linha coluna val) 
     (and (avaliarVizinhosColunaDir tabuleiro linha coluna val) (avaliarVizinhosColunaEsq tabuleiro linha coluna val) (avaliarVizinhosLinhaCima tabuleiro linha coluna val) (avaliarVizinhosLinhaBaixo tabuleiro linha coluna val))
 )
