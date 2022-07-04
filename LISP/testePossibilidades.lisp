@@ -15,7 +15,7 @@
             (resolverTabuleiroLinha matriz (cdr resto_linha) (car resto_linha))
         )
         (if (= (car(last(car linha_atual))) 0)
-            (for matriz resto_linha (cdr linha_atual) (car linha_atual) (testarvalores matriz (car linha_atual) (getTamanhoRegiao matriz (car(cdr(cdr(car linha_atual)))) )));(testarValores matriz (car linha_atual) (getTamanhoRegiao matriz (car(cdr(cdr(car linha_atual))))) ) )
+            (for matriz resto_linha (cdr linha_atual) (car linha_atual) (testarvalores matriz (car linha_atual) (getTamanhoRegiao matriz (car(cdr(cdr(car linha_atual)))) )))
             (resolverTabuleiroLinha matriz resto_linha (cdr linha_atual) )
         )
     )
