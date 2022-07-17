@@ -77,7 +77,7 @@ adjacente([[_,X1],[R2,X2]|T]) :-
   o limite superior deve ser inserido pelo usuario(de preferencia o tamanho da maior região)*/
 intervalo([_,X]) :- X in 1..6.
 
-/*predicado que define que uma posição deve ser menor que o tamanho de sua região*/
+/*predicado que define que uma posição deve ser menor ou igual o tamanho de sua região*/
 limite_regiao([R,X]) :-tam_R(R,T), X #=< T.
 
 /* querry para obter a resposta do problema: problem(1, Rows), kojun(Rows). */
