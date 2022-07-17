@@ -34,7 +34,7 @@ kojun(L) :-
     igual(8, S, R8),
     igual(9, S, R9),
     igual(10, S, R10),
-    Rs = [R0,R1,R2,R3,R4,R5,R6,R7,R8,R9,R10], diferente(Rs),
+    Rs = [R0,R1,R2,R3,R4,R5,R6,R7,R8,R9,R10], diferente_regiao(Rs),
     maplist(acima_maior, Columns).
 
 /*definição dos tabuleiros*/
@@ -47,9 +47,9 @@ problem(1, [[[0,_],[1,_],[1,4],[1 ,_],[2 ,2],[3 ,_]],
 
 /*predicado para definir que todos as posições de uma região devem ser diferentes
   recebe uma lista de regiões com os seus elementos*/
-diferente([H]) :-
+diferente_regiao([H]) :-
     all_distinct(H).
-diferente([H|T]) :-
+diferente_regiao([H|T]) :-
     all_distinct(H),
     diferente(T).
 
@@ -68,7 +68,7 @@ igual(_, [], []).
 igual(R, [[R1, X1] | T], [X1 | L]) :- R #= R1, igual(R, T, L).
 igual(R, [[R1, _] | T], L) :- R #\= R1, igual(R, T, L).
 
-/*predicado para definie que toda celula adjacente deve ser diferente*/
+/*predicado para definie que toda celulas adjacentes umas as outras devem ser diferentes*/
 adjacente([[_,_]]).
 adjacente([[_,X1],[R2,X2]|T]) :-
     all_distinct([X1,X2]),append([[R2,X2]],T,L), adjacente(L).
